@@ -23,8 +23,6 @@ mock html dom element
 
 ## Installation
 
-You must use __npm__ __2.7.0__ or higher because of the scoped package name.
-
     $ npm init
     $ npm install mockbot-element --save-dev
   
