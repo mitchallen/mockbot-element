@@ -20,10 +20,6 @@
     "type": "git",
     "url": "https://github.com/mitchallen/mockbot-element.git"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://gitlab.com/mitchallen/mockbot-element.git"
-  },
   "author": "Mitch Allen <npm@mitchallen.com> (http://mitchallen.com)",
   "license": "MIT",
   "dependencies": {
