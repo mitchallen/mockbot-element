@@ -1,5 +1,5 @@
 /**
-    Module: @mitchallen/mockbot-element
+    Module: mockbot-element
     Author: Mitch Allen
 */
 
@@ -25,30 +25,46 @@
  * @param {Object} options Named parameters object
  * @returns {module:mockbot-element}
  * @example <caption>Usage example</caption>
- * var factory = require("@mitchallen/mockbot-element");
+ * var factory = require("mockbot-element");
  * var obj = factory.create({});
  */
 module.exports.create = (spec) => {
-    if(!spec) {
-        return null;
-    }
+    spec = spec || {};
     // private 
-    let _package = "@mitchallen/mockbot-element";
     return {
-        // public
-        /** Returns the package name
+        /** mock element.setAttribute
           * @function
           * @instance
+          * @param {string} name attribute name
+          * @param {string} value attribute value
           * @memberof module:mockbot-element
+          * @example <caption>usage</caption>
+          * el.setAttribute("width");
         */
-        package: () => _package,
-        /** Health check
+        setAttribute: function(name,value) {},
+
+        /** mock element.getAttribute
           * @function
           * @instance
+          * @param {Object} options Named parameters object
           * @memberof module:mockbot-element
-          * @example <caption>Health check</caption>
-          * obj.health.should.eql("OK");
+          * @example <caption>usage</caption>
+          * el.setAttribute("width");
         */
-        health: () => "OK"
+        getAttribute: function(name) {
+            return {};
+        },
+        /** mock element.cloneNode
+          * @function
+          * @instance
+          * @param {boolean} deep If true, clone children as well
+          * @memberof module:mockbot-element
+          * @returns {module:mockbot-element}
+          * @example <caption>usage</caption>
+          * el.setAttribute("width");
+        */
+        cloneNode: function(deep) {
+            return Object.create(this,{});
+        },
     };
 };

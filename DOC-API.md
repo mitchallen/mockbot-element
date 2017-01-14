@@ -1,35 +1,3 @@
-mockbot-element
-==
-mock html dom element
---
-
-<p align="left">
-  <a href="https://travis-ci.org/mitchallen/mockbot-element">
-    <img src="https://img.shields.io/travis/mitchallen/mockbot-element.svg?style=flat-square" alt="Version">
-  </a>
-  <a href="https://codecov.io/gh/mitchallen/mockbot-element">
-    <img src="https://codecov.io/gh/mitchallen/mockbot-element/branch/master/graph/badge.svg" alt="Coverage Status">
-  </a>
-  <a href="https://npmjs.org/package/mockbot-element">
-    <img src="http://img.shields.io/npm/dt/mockbot-element.svg?style=flat-square" alt="Downloads">
-  </a>
-  <a href="https://npmjs.org/package/mockbot-element">
-    <img src="http://img.shields.io/npm/v/mockbot-element.svg?style=flat-square" alt="Version">
-  </a>
-  <a href="https://npmjs.com/package/mockbot-element">
-    <img src="https://img.shields.io/npm/l/mockbot-element.svg?style=flat-square" alt="License"></a>
-  </a>
-</p>
-
-## Installation
-
-You must use __npm__ __2.7.0__ or higher because of the scoped package name.
-
-    $ npm init
-    $ npm install mockbot-element --save-dev
-  
-* * *
-
 ## Modules
 
 <dl>
@@ -120,36 +88,3 @@ It takes one spec parameter that must be an object with named parameters
 var factory = require("mockbot-element");
 var obj = factory.create({});
 ```
-
-
-* * *
-
-## Testing
-
-To test, go to the root folder and type (sans __$__):
-
-    $ npm test
-   
-* * *
- 
-## Repo(s)
-
-* [bitbucket.org/mitchallen/mockbot-element.git](https://bitbucket.org/mitchallen/mockbot-element.git)
-* [github.com/mitchallen/mockbot-element.git](https://github.com/mitchallen/mockbot-element.git)
-
-* * *
-
-## Contributing
-
-In lieu of a formal style guide, take care to maintain the existing coding style.
-Add unit tests for any new or changed functionality. Lint and test your code.
-
-* * *
-
-## Version History
-
-#### Version 0.1.0 
-
-* initial release
-
-* * *
