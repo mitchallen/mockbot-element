@@ -39,7 +39,7 @@ This can be worked around by creating a mock object that simulates the browser o
 
     var testAttr = "alpha",
         testValue = "zorro",
-        el = elementFactory.create({});
+        el = elementFactory.create({ tagName: "div", id: "d1" });
         
     el.setAttribute(testAttr,testValue);
     var result = el.getAttribute(testAttr);
@@ -176,6 +176,11 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 * * *
 
 ## Version History
+
+#### Version 0.1.7
+
+* updated usage example
+* removed client example
 
 #### Version 0.1.6
 
