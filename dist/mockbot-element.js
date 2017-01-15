@@ -12,6 +12,7 @@
 /**
  * Module
  * @module mockbot-element
+ * @property {String} id - the id of the element
  */
 
 /**
@@ -31,44 +32,66 @@
 */
 
 module.exports.create = function (spec) {
-    spec = spec || {};
-    // private 
-    return {
-        /** mock element.setAttribute
-          * @function
-          * @instance
-          * @param {string} name attribute name
-          * @param {string} value attribute value
-          * @memberof module:mockbot-element
-          * @example <caption>usage</caption>
-          * el.setAttribute("width");
-        */
-        setAttribute: function setAttribute(name, value) {},
+  spec = spec || {};
+  // private
+  var m_attribute = [];
+  if (spec.id) {
+    m_attribute.id = spec.id;
+  }
+  var obj = {
+    /** mock element.setAttribute
+      * @function
+      * @instance
+      * @param {string} name attribute name
+      * @param {string} value attribute value
+      * @memberof module:mockbot-element
+      * @example <caption>usage</caption>
+      * el.setAttribute("width","5");
+    */
+    setAttribute: function setAttribute(name, value) {
+      m_attribute[name] = value;
+    },
 
-        /** mock element.getAttribute
-          * @function
-          * @instance
-          * @param {Object} options Named parameters object
-          * @memberof module:mockbot-element
-          * @example <caption>usage</caption>
-          * el.setAttribute("width");
-        */
-        getAttribute: function getAttribute(name) {
-            return {};
-        },
-        /** mock element.cloneNode
-          * @function
-          * @instance
-          * @param {boolean} deep If true, clone children as well
-          * @memberof module:mockbot-element
-          * @returns {module:mockbot-element}
-          * @example <caption>usage</caption>
-          * el.setAttribute("width");
-        */
-        cloneNode: function cloneNode(deep) {
-            return Object.create(this, {});
-        }
-    };
+    /** mock element.getAttribute
+      * @function
+      * @instance
+      * @param {Object} options Named parameters object
+      * @memberof module:mockbot-element
+      * @example <caption>usage</caption>
+      * var w = el.getAttribute("width");
+    */
+    getAttribute: function getAttribute(name) {
+      return m_attribute[name];
+    },
+    /** mock element.cloneNode
+      * @function
+      * @instance
+      * @param {boolean} deep If true, clone children as well
+      * @memberof module:mockbot-element
+      * @returns {module:mockbot-element}
+      * @example <caption>usage</caption>
+      * var n = el.cloneNode();
+    */
+    cloneNode: function cloneNode(deep) {
+      return Object.create(this, {});
+    }
+  };
+
+  Object.defineProperties(obj, {
+    // properties are documented in the module section at the top
+    "id": {
+      get: function get() {
+        return m_attribute.id;
+      },
+      set: function set(id) {
+        return m_attribute.id = id;
+      },
+      enumerable: true
+    }
+
+  });
+
+  return obj;
 };
 
 },{}]},{},[1])(1)

@@ -14,6 +14,12 @@
 ## mockbot-element
 Module
 
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| id | <code>String</code> | the id of the element |
+
 
 * [mockbot-element](#module_mockbot-element)
     * [.setAttribute(name, value)](#module_mockbot-element+setAttribute)
@@ -34,7 +40,7 @@ mock element.setAttribute
 
 **Example** *(usage)*  
 ```js
-el.setAttribute("width");
+el.setAttribute("width","5");
 ```
 <a name="module_mockbot-element+getAttribute"></a>
 
@@ -49,7 +55,7 @@ mock element.getAttribute
 
 **Example** *(usage)*  
 ```js
-el.setAttribute("width");
+var w = el.getAttribute("width");
 ```
 <a name="module_mockbot-element+cloneNode"></a>
 
@@ -64,7 +70,7 @@ mock element.cloneNode
 
 **Example** *(usage)*  
 ```js
-el.setAttribute("width");
+var n = el.cloneNode();
 ```
 <a name="module_mockbot-element-factory"></a>
 

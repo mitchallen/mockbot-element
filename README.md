@@ -21,10 +21,28 @@ mock html dom element
   </a>
 </p>
 
+
 ## Installation
 
     $ npm init
     $ npm install mockbot-element --save-dev
+    
+* * * 
+
+## Usage
+
+With tools like __browserify__, it's easy to create client side code in node.js. But, when testing with tools like __mocha__, code that references browser elements or the document document object will throw an error.
+
+This can be worked around by creating a mock object that simulates the browser object:
+
+    var elementFactory = require('mockbot-element');
+
+    var testAttr = "alpha",
+        testValue = "zorro",
+        el = elementFactory.create({});
+        
+    el.setAttribute(testAttr,testValue);
+    var result = el.getAttribute(testAttr);
   
 * * *
 
@@ -43,6 +61,12 @@ mock html dom element
 
 ## mockbot-element
 Module
+
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| id | <code>String</code> | the id of the element |
 
 
 * [mockbot-element](#module_mockbot-element)
@@ -64,7 +88,7 @@ mock element.setAttribute
 
 **Example** *(usage)*  
 ```js
-el.setAttribute("width");
+el.setAttribute("width","5");
 ```
 <a name="module_mockbot-element+getAttribute"></a>
 
@@ -79,7 +103,7 @@ mock element.getAttribute
 
 **Example** *(usage)*  
 ```js
-el.setAttribute("width");
+var w = el.getAttribute("width");
 ```
 <a name="module_mockbot-element+cloneNode"></a>
 
@@ -94,7 +118,7 @@ mock element.cloneNode
 
 **Example** *(usage)*  
 ```js
-el.setAttribute("width");
+var n = el.cloneNode();
 ```
 <a name="module_mockbot-element-factory"></a>
 
@@ -145,6 +169,12 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 * * *
 
 ## Version History
+
+#### Version 0.1.3
+
+* added id property
+* cleaned up documentation
+* updated methods to simulate real methods
 
 #### Version 0.1.2
 
