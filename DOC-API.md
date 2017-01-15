@@ -80,7 +80,7 @@ Factory module
 
 <a name="module_mockbot-element-factory.create"></a>
 
-### mockbot-element-factory.create(options) ⇒ <code>[mockbot-element](#module_mockbot-element)</code>
+### mockbot-element-factory.create(spec) ⇒ <code>[mockbot-element](#module_mockbot-element)</code>
 Factory method 
 It takes one spec parameter that must be an object with named parameters
 
@@ -88,10 +88,17 @@ It takes one spec parameter that must be an object with named parameters
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | <code>Object</code> | Named parameters object |
+| spec | <code>Object</code> | Named parameters object |
+| spec.tagName | <code>string</code> | required HTML tagName (a, div, x-thing, etc.) |
+| spec.id | <code>string</code> | optional id attribute for HTML element |
 
-**Example** *(Usage example)*  
+**Example** *(Usage)*  
 ```js
 var factory = require("mockbot-element");
-var obj = factory.create({});
+var obj = factory.create({ tagName: "div" });
+```
+**Example** *(Usage with id)*  
+```js
+var factory = require("mockbot-element");
+var obj = factory.create({ tagName: "div", id: "d1" });
 ```
