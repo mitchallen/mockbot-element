@@ -72,7 +72,7 @@ Module
 
 * [mockbot-element](#module_mockbot-element)
     * [.setAttribute(name, value)](#module_mockbot-element+setAttribute)
-    * [.getAttribute(options)](#module_mockbot-element+getAttribute)
+    * [.getAttribute(name)](#module_mockbot-element+getAttribute)
     * [.cloneNode(deep)](#module_mockbot-element+cloneNode) ⇒ <code>[mockbot-element](#module_mockbot-element)</code>
 
 <a name="module_mockbot-element+setAttribute"></a>
@@ -93,14 +93,14 @@ el.setAttribute("width","5");
 ```
 <a name="module_mockbot-element+getAttribute"></a>
 
-### mockbot-element.getAttribute(options)
+### mockbot-element.getAttribute(name)
 mock element.getAttribute
 
 **Kind**: instance method of <code>[mockbot-element](#module_mockbot-element)</code>  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | <code>Object</code> | Named parameters object |
+| name | <code>string</code> | attribute name |
 
 **Example** *(usage)*  
 ```js
@@ -170,6 +170,10 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 * * *
 
 ## Version History
+
+#### Version 0.1.5
+
+* fixed documentation for getAttribute
 
 #### Version 0.1.4
 
