@@ -67,6 +67,7 @@ Module
 | Name | Type | Description |
 | --- | --- | --- |
 | id | <code>String</code> | the id of the element |
+| tagName | <code>String</code> | read-only tagName of element as uppercase (i.e. 'DIV') |
 
 
 * [mockbot-element](#module_mockbot-element)
@@ -169,6 +170,10 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 * * *
 
 ## Version History
+
+#### Version 0.1.4
+
+* added tagName property
 
 #### Version 0.1.3
 

@@ -19,6 +19,7 @@ Module
 | Name | Type | Description |
 | --- | --- | --- |
 | id | <code>String</code> | the id of the element |
+| tagName | <code>String</code> | read-only tagName of element as uppercase (i.e. 'DIV') |
 
 
 * [mockbot-element](#module_mockbot-element)
