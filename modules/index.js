@@ -8,11 +8,21 @@
 
 "use strict";
 
+var nodeFactory = require('mockbot-node');
+
+/**
+ * MockBot Node
+ * @external mockbot-node
+ * @see {@link https://www.npmjs.com/package/mockbot-node|mockbot-node}
+ */
+
 /**
  * Module
  * @module mockbot-element
+ * @extends external:mockbot-node
  * @property {String} id - the id of the element
  * @property {String} tagName - read-only tagName of element as uppercase (i.e. 'DIV')
+ * @property {String} outerHTML - WARNING: only get currently works, set not implemented
  */
 
 /**
@@ -49,7 +59,11 @@ module.exports.create = (spec) => {
     if( spec.id ) {
       m_attribute.id = spec.id;
     }
-    var obj = {
+
+    // nodeType EXPORT_NODE = 1
+    var obj = nodeFactory.create( { nodeType: 1 } );
+
+    Object.assign( obj, {
         /** mock element.setAttribute
           * @function
           * @instance
@@ -74,19 +88,18 @@ module.exports.create = (spec) => {
         getAttribute: function(name) {
             return m_attribute[name];
         },
-        /** mock element.cloneNode
+
+        /** return value of outerHTML
           * @function
           * @instance
-          * @param {boolean} deep If true, clone children as well
           * @memberof module:mockbot-element
-          * @returns {module:mockbot-element}
           * @example <caption>usage</caption>
-          * var n = el.cloneNode();
+          * console.log("ELEMENT: " + el);
         */
-        cloneNode: function(deep) {
-            return Object.create(this,{});
+        toString: function() {
+            return this.outerHTML;
         },
-    };
+    });
 
     Object.defineProperties( obj, {
       // properties are documented in the module section at the top
@@ -98,7 +111,30 @@ module.exports.create = (spec) => {
 
       "tagName": {
         writable: false,
+        enumerable: true,
         value: m_tagName.toUpperCase()
+      },
+
+      "outerHTML": {
+        get: function() {
+            var str = "<" + this.tagName.toLowerCase();
+            str += Object.keys(m_attribute).reduce( 
+                function(s, key) { 
+                    var sValue = typeof m_attribute[key] === 'object' ? "[object Object]" : m_attribute[key];
+                    return s + " " + key + ( sValue.length > 0 ? "=\""  + sValue  + "\"" : ""); 
+                }, "" );
+            str += ">";
+            str += this.childNodes.reduce( 
+                function(s,el) { return s + el.outerHTML; }, 
+                "" );
+            str += "</" + this.tagName.toLowerCase() + ">";
+            return str;
+        },
+        set: function(html) {
+            // TODO - parse HTML 
+            console.warn("*** WARNING: .outerHTMl set not implemented");
+        },
+        enumerable: true
       },
 
     });

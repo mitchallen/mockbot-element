@@ -26,7 +26,7 @@ mock html dom element
 
     $ npm init
     $ npm install mockbot-element --save-dev
-    
+        
 * * * 
 
 ## Usage
@@ -43,13 +43,23 @@ This can be worked around by creating a mock object that simulates the browser o
         
     el.setAttribute(testAttr,testValue);
     var result = el.getAttribute(testAttr);
+    
+### mockbot-document integration
+
+This package is also installed as part of __[mockbot-document](https://www.npmjs.com/package/mockbot-document)__. Through mockbot-document you can create mockbot-elements by simulating the browser __document.createElement__ method.
+
+
+### mockbot-node
+
+This package derives from __[mockbot-node](https://www.npmjs.com/package/mockbot-node)__. See that packages documentation for additional methods.
   
 * * *
+
 
 ## Modules
 
 <dl>
-<dt><a href="#module_mockbot-element">mockbot-element</a></dt>
+<dt><a href="#module_mockbot-element">mockbot-element</a> ⇐ <code><a href="#external_mockbot-node">mockbot-node</a></code></dt>
 <dd><p>Module</p>
 </dd>
 <dt><a href="#module_mockbot-element-factory">mockbot-element-factory</a></dt>
@@ -57,23 +67,33 @@ This can be worked around by creating a mock object that simulates the browser o
 </dd>
 </dl>
 
+## External
+
+<dl>
+<dt><a href="#external_mockbot-node">mockbot-node</a></dt>
+<dd><p>MockBot Node</p>
+</dd>
+</dl>
+
 <a name="module_mockbot-element"></a>
 
-## mockbot-element
+## mockbot-element ⇐ <code>[mockbot-node](#external_mockbot-node)</code>
 Module
 
+**Extends:** <code>[mockbot-node](#external_mockbot-node)</code>  
 **Properties**
 
 | Name | Type | Description |
 | --- | --- | --- |
 | id | <code>String</code> | the id of the element |
 | tagName | <code>String</code> | read-only tagName of element as uppercase (i.e. 'DIV') |
+| outerHTML | <code>String</code> | WARNING: only get currently works, set not implemented |
 
 
-* [mockbot-element](#module_mockbot-element)
+* [mockbot-element](#module_mockbot-element) ⇐ <code>[mockbot-node](#external_mockbot-node)</code>
     * [.setAttribute(name, value)](#module_mockbot-element+setAttribute)
     * [.getAttribute(name)](#module_mockbot-element+getAttribute)
-    * [.cloneNode(deep)](#module_mockbot-element+cloneNode) ⇒ <code>[mockbot-element](#module_mockbot-element)</code>
+    * [.toString()](#module_mockbot-element+toString)
 
 <a name="module_mockbot-element+setAttribute"></a>
 
@@ -106,20 +126,15 @@ mock element.getAttribute
 ```js
 var w = el.getAttribute("width");
 ```
-<a name="module_mockbot-element+cloneNode"></a>
+<a name="module_mockbot-element+toString"></a>
 
-### mockbot-element.cloneNode(deep) ⇒ <code>[mockbot-element](#module_mockbot-element)</code>
-mock element.cloneNode
+### mockbot-element.toString()
+return value of outerHTML
 
 **Kind**: instance method of <code>[mockbot-element](#module_mockbot-element)</code>  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| deep | <code>boolean</code> | If true, clone children as well |
-
 **Example** *(usage)*  
 ```js
-var n = el.cloneNode();
+console.log("ELEMENT: " + el);
 ```
 <a name="module_mockbot-element-factory"></a>
 
@@ -150,6 +165,13 @@ var obj = factory.create({ tagName: "div" });
 var factory = require("mockbot-element");
 var obj = factory.create({ tagName: "div", id: "d1" });
 ```
+<a name="external_mockbot-node"></a>
+
+## mockbot-node
+MockBot Node
+
+**Kind**: global external  
+**See**: [mockbot-node](https://www.npmjs.com/package/mockbot-node)  
 
 * * *
 
@@ -176,6 +198,13 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 * * *
 
 ## Version History
+
+#### Version 0.1.8
+
+* moved node base method (cloneNode) to mockbot-node package
+* now derives from mockbot-node package
+* added outerHTML property (WARNING: only get works, not set)
+* added toString method
 
 #### Version 0.1.7
 
